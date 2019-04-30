@@ -8,7 +8,7 @@ def openwave(filename):
 def DFT(data):
     res = []
     N = len(data)
-    for k in range(N):
+    for k in range(1):
         summ = 0
         for n in range(N):
             summ += data[n]*math.exp(1)**complex(0, -2*math.pi*k*n/N)
@@ -33,13 +33,14 @@ def w_ham(n, N): #hamming
 def windowDFT(data, w=1000):
     res = []
     N = len(data)
-    if N<w:
-        w=N
+    if N < w:
+        w = N
     start = 0
-    for n in range(N):
+    for n in range(1):
         summ = 0
-        for m in range(min(start, N-w),min(start+w, N)):
-            summ += data[m] * w_ham(n-m, N) * math.exp(1)**(complex(0,w*m))
+        for m in range(min(start, N-w), min(start+w, N)):
+            summ += data[m] * w_ham(n-m, N) * math.exp(1)**(complex(0, -w*m))
         res.append(summ)
+        start += 1
     return res
 
