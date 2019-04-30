@@ -39,7 +39,7 @@ def windowDFT(data, w=1000):
     for n in range(N):
         summ = 0
         for m in range(min(start, N-w), min(start+w, N)):
-            summ += data[m] * w_ham(n-m, N) * math.exp(1)**(complex(0, -2*math.pi*n*m))
+            summ += data[m] * w_ham(n-m, N) * math.exp(1)**(complex(0, -2*math.pi*n*m/N))
         res.append(summ)
         start += 1
     return res
